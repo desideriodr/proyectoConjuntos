@@ -68,4 +68,30 @@
             </div>
         </div>
     </body>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var reservasAreasComunesLink = document.getElementById('reservasAreasComunes');
+    
+    reservasAreasComunesLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Evita que se realice la acción predeterminada del enlace
+        
+        var xhr = new XMLHttpRequest();
+        var url = "/proyectoConjuntos/controllers/ReservasController.php";
+        xhr.open('GET', url, true); // Reemplaza con la ruta real de tu controlador
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                // Inserta el contenido de la vista de reservas de áreas comunes en el área de contenido
+                document.querySelector('.content').innerHTML = xhr.responseText;
+            } else {
+                console.error('Error al cargar la vista de reservas de áreas comunes');
+            }
+        };
+        xhr.onerror = function() {
+            console.error('Error de red al cargar la vista de reservas de áreas comunes');
+        };
+        xhr.send();
+    });
+});
+
+    </script>
 </html>

@@ -1,6 +1,8 @@
 <?php
 
-require_once 'C:/XAMPP/htdocs/proyectoConjuntos/models/Reserva.php';
+require_once 'C:/XAMPP/htdocs/proyectoConjuntos/models/ZonasComunes.php';
+require_once 'C:/XAMPP/htdocs/proyectoConjuntos/models/Reservas.php';
+
 
 class ReservasController {
     public function mostrarReservas() {
