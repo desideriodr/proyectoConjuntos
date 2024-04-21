@@ -183,6 +183,7 @@ body {
 
 /* Estilos para la tarjeta */
 .card-reservas {
+    width: 400px;
     margin-bottom: 0; /* Eliminamos el margen inferior */
     border-radius: 5px; /* Bordes redondeados */
     border: none; /* Sin borde */
