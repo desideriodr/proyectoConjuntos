@@ -1,5 +1,5 @@
-// JavaScript para controlar la visibilidad del contenedor de reservas
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function() {
+    // JavaScript para controlar la visibilidad del contenedor de reservas
     var reservasAreasComunesLink = document.getElementById('reservasAreasComunes');
     var reservasContent = document.getElementById('reservasContent');
 
@@ -7,35 +7,29 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault(); // Evita que se realice la acción predeterminada del enlace
 
         // Si el contenedor de reservas está oculto, muéstralo; de lo contrario, ocúltalo
-        if (reservasContent.style.display === 'none') {
-            reservasContent.style.display = 'block';
-        } else {
-            reservasContent.style.display = 'none';
-        }
+        reservasContent.style.display = (reservasContent.style.display === 'none') ? 'block' : 'none';
+    });
+
+    // Manejar el registro de reservas al hacer clic en el botón Registrar
+     document.querySelectorAll(".btnRegistrar").forEach(function(button) {
+        button.addEventListener("click", function(e) {
+            e.preventDefault();
+            
+            var form = this.closest('tr').querySelector('form');
+            var formData = new FormData(form);
+            
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    
+                    alert("¡Registrado con éxito!");
+                    
+                }else {
+                        alert("Error al registrar");
+                    }
+            };
+            xhr.open("POST", form.action, true);
+            xhr.send(formData);
+        });
     });
 });
-
-
-
-function formatDate(date) {
-    // Obtiene el día, mes y año
-    var day = date.getDate();
-    var month = date.getMonth() + 1; // Se suma 1 porque los meses van de 0 a 11
-    var year = date.getFullYear();
-
-    // Ajusta el formato para que siempre tenga dos dígitos
-    if (day < 10) {
-        day = '0' + day;
-    }
-    if (month < 10) {
-        month = '0' + month;
-    }
-
-    // Retorna la fecha en formato "YYYY-MM-DD"
-    return year + '-' + month + '-' + day;
-}
-
-// Ejemplo de uso
-var fecha = new Date('01/01/2021');
-var fechaFormateada = formatDate(fecha);
-console.log(fechaFormateada);
