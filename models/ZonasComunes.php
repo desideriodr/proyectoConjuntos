@@ -3,15 +3,19 @@
 require_once 'C:/XAMPP/htdocs/proyectoConjuntos/includes/conexion.php';
 
 class ZonasComunes {
+
     public static function obtenerZonas() {
         global $db;
 
         // Consultar la base de datos para obtener las zonas comunes
         $sql = "SELECT * FROM zonas_comunes";
-        $result = $db->query($sql);
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
 
         // Verificar si se obtuvieron resultados
-        if ($result && $result->num_rows > 0) {
+        if ($result->num_rows > 0) {
             // Convertir los resultados en un array asociativo
             $zonas = [];
             while ($row = $result->fetch_assoc()) {
@@ -22,5 +26,7 @@ class ZonasComunes {
             return []; // Devolver un array vacío si no hay zonas comunes
         }
     }
+
 }
 
+?>
