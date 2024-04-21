@@ -1,0 +1,165 @@
+/* Estilos CSS para el login */
+
+/* Cambiar color de fondo del botón al pasar el cursor */
+.btn-primary:hover {
+    background-color: #28a745;
+}
+
+/* Agregar estilos al título "Iniciar Sesión" */
+.card-title {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    text-align: center; /* Añadir centrado del texto */
+}
+
+/* Ajustar el tamaño de la tarjeta */
+.card {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px; /* Añadir padding */
+    margin: auto; /* Centrar horizontalmente */
+}
+
+/* Añadir estilos adicionales para centrar el formulario en pantallas grandes */
+@media (min-width: 992px) {
+    .card {
+        margin-top: 50px; /* Espacio adicional en la parte superior */
+    }
+}
+
+/* Estilos CSS para el dashboard */
+
+/* Reset de estilos */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Barra superior */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.top-bar h2 {
+    margin: 0;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.user-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+}
+
+.user-menu li {
+    list-style-type: none;
+    margin-bottom: 5px;
+}
+
+/* Estilos CSS */
+
+/* Ajustes para submenús */
+.submenu {
+    position: absolute;
+    top: 100%; /* Desplazar el submenú hacia abajo */
+    left: 0; /* Alinear el submenú con el elemento de menú padre */
+    display: none;
+    background-color: #343a40; /* Fondo del submenú */
+    min-width: 200px; /* Ancho mínimo */
+    padding: 10px;
+    z-index: 1; /* Asegurar que el submenú esté por encima del contenido */
+}
+
+.nav-item:hover .submenu {
+    display: block; /* Mostrar el submenú al pasar el mouse sobre el elemento de menú padre */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+/* Estilos para los botones del menú */
+.nav-link.btn {
+    color: #fff; /* Color del texto blanco */
+    background-color: #007bff; /* Color de fondo del botón */
+    border: none; /* Sin borde */
+    border-radius: 0; /* Sin borde redondeado */
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+.nav-link.btn:hover {
+    background-color: #0056b3; /* Cambiar el color de fondo al pasar el cursor */
+}
+
+/* Estilos para los iconos */
+.nav-link .bi {
+    margin-left: auto; /* Mover el icono al final del elemento de menú */
+    margin-right: 5px; /* Añadir espacio entre el texto y el icono */
+}
+
+/* Estilos para los submenús */
+.submenu {
+    position: absolute;
+    top: 100%; /* Desplazar el submenú hacia abajo */
+    left: 0;
+    display: none;
+    background-color: #343a40; /* Color de fondo del submenú */
+    min-width: 200px; /* Ancho mínimo */
+    padding: 10px;
+    z-index: 1; /* Asegurar que el submenú esté por encima del contenido */
+}
+
+.nav-link.btn:focus + .submenu {
+    display: block; /* Mostrar el submenú al hacer clic en el botón */
+}
+
+/* Otros estilos para el sidebar */
+.sidebar {
+    background-color: #343a40;
+    color: #fff;
+    height: 100vh;
+    position: relative; /* Establecer posición relativa para los elementos hijos posicionados absolutamente */
+}
+
+.sidebar ul {
+    padding-top: 20px;
+    position: relative; /* Establecer posición relativa para los submenús posicionados absolutamente */
+}
+
+/*pie de pagina*/
+.footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* User Dropdown */
+.dropdown-menu {
+    right: 0 !important;
+    left: auto !important;
+}
+
