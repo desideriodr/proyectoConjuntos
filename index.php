@@ -1,9 +1,7 @@
 <?php
-// Incluir el archivo init.php para inicializar la aplicación
-require_once 'init.php';
+// index.php
 
-//depurar
-//echo $_SERVER['REQUEST_URI'];
+require_once 'init.php';
 
 // Enrutador básico
 if ($_SERVER['REQUEST_URI'] === '/proyectoConjuntos/index.php') {
@@ -16,6 +14,10 @@ if ($_SERVER['REQUEST_URI'] === '/proyectoConjuntos/index.php') {
 } elseif ($_SERVER['REQUEST_URI'] === '/proyectoConjuntos/views/dashboard.php') {
     // Mostrar el dashboard si el usuario está autenticado
     DashboardController::showDashboard();
+} elseif ($_SERVER['REQUEST_URI'] === '/proyectoConjuntos/views/dashboard.php#reservasAreasComunes') {
+    // Mostrar reservas de áreas comunes en el dashboard
+    $reservasController = new ReservasController();
+    $reservasController->mostrarReservas();
 } else {
     // Mostrar un error 404 si la ruta no coincide con ninguna ruta conocida
     http_response_code(404);

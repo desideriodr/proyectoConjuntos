@@ -6,7 +6,6 @@
         <title>Dashboard</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="../resource/css/styles.css">
-        <script src="../main.js"></script>
     </head>
     <body>
         <div class="container-fluid">
@@ -63,12 +62,79 @@
                 </div>
                 <div class="col-md-10 content">
                     <!-- Contenido del dashboard -->
-                    <div id="reservaAreasComunesContent"></div>
+
+                    <div id="reservasContent" class="reservas-content">
+                        <div class="card-reservas">
+                            <div class="card-header">
+                                Reservas de Áreas Comunes
+                            </div>
+                            <div class="card-body" style="display: inline-block;">
+                                <!-- Contenido de las reservas -->
+                                <table class="table table-striped table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Nombre de la Zona</th>
+                                            <th>Capacidad Máxima</th>
+                                            <th>Residente</th>
+                                            <th>Cantidad invitados</th>
+                                            <th>Estado</th>
+                                            <th>Desde</th>
+                                            <th>Hasta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        // Incluir el archivo del controlador
+                                        require_once 'C:/XAMPP/htdocs/proyectoConjuntos/controllers/ReservasController.php';
+
+                                        // Crear una instancia del controlador de reservas
+                                        $reservasController = new ReservasController();
+
+                                        // Obtener las zonas disponibles
+                                        $zonasDisponibles = $reservasController->mostrarZonas();
+
+                                        // Obtener los residentes disponibles (supongamos que existe un método para esto en el controlador)
+                                        $residentesDisponibles = $reservasController->mostrarResidentes();
+
+                                        // Iterar sobre las zonas disponibles y mostrar cada una en una fila de la tabla
+                                        foreach ($zonasDisponibles as $zona) {
+                                            echo "<tr>";
+                                            echo "<td>" . $zona['nombre'] . "</td>";
+                                            echo "<td>" . $zona['capacidadMax'] . "</td>";
+                                            echo "<td>"; // Abre la celda para el campo de selección
+                                            echo "<select name='residente' class='form-control'>"; // Abre el select
+                                            echo "<option value='' selected>Seleccione..</option>"; // Opción por defecto
+                                            // Iterar sobre los residentes y generar las opciones del select
+                                            foreach ($residentesDisponibles as $residente) {
+                                                echo "<option value='" . $residente['id'] . "'>" . $residente['nombre'] . "</option>";
+                                            }
+                                            echo "</select>"; // Cierra el select
+                                            echo "</td>"; // Cierra la celda
+                                            // Agrega la celda para el campo de cantidad de invitados
+                                            echo "<td>";
+                                            echo "<input type='number' name='cantidadInvitados' min='0' max='" . $zona['capacidadMax'] . "'>";
+                                            echo "</td>";
+                                            echo "<td>"; // Abre la celda para el estado
+                                            // Agregar una clase de Bootstrap dependiendo del estado
+                                            $estadoClass = ($zona['estado'] === 'Libre') ? 'text-success' : 'text-danger';
+                                            echo "<span class='badge badge-pill $estadoClass'>" . $zona['estado'] . "</span>";
+                                            echo "</td>"; // Cierra la celda del estado
+                                            // Agrega las celdas para los campos de fecha desde y hasta
+                                            echo "<td><input type='date' name='fechaDesde' value='--------'></td>";
+                                            echo "<td><input type='date' name='fechaHasta' value='--------'></td>";
+                                            echo "</tr>";
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
         </div>
+        <script src="../main.js"></script>
     </body>
-    
-    
 </html>

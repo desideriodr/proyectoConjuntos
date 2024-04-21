@@ -1,17 +1,25 @@
 <?php
 
 require_once 'C:/XAMPP/htdocs/proyectoConjuntos/models/ZonasComunes.php';
-require_once 'C:/XAMPP/htdocs/proyectoConjuntos/models/Reservas.php';
+require_once 'C:/XAMPP/htdocs/proyectoConjuntos/models/Residentes.php';
 
 
 class ReservasController {
     
-    public function mostrarReservas() {
+    public function mostrarZonas() {
         $zonasDisponibles = ZonasComunes::obtenerZonas();
-        $reservas = Reservas::obtenerReservas();
-
-        // Cargar la vista de reservas
-        require_once '../views/reservas_areas_comunes.php';
+        // $reservas = Reservas::obtenerReservas();
+        return $zonasDisponibles;
+// Cargar la vista de reservas
+        // require_once 'C:/XAMPP/htdocs/proyectoConjuntos/views/reservas_areas_comunes.php';
+    }
+    
+    public function mostrarResidentes() {
+        $zonasDisponibles = Residentes::obtenerResidentes();
+        // $reservas = Reservas::obtenerReservas();
+        return $zonasDisponibles;
+// Cargar la vista de reservas
+        // require_once 'C:/XAMPP/htdocs/proyectoConjuntos/views/reservas_areas_comunes.php';
     }
     
     public function hacerReserva() {
