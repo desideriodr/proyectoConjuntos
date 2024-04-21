@@ -3,6 +3,9 @@
 require_once 'C:/XAMPP/htdocs/proyectoConjuntos/models/ZonasComunes.php';
 require_once 'C:/XAMPP/htdocs/proyectoConjuntos/models/Residentes.php';
 
+var_dump($_POST);
+$idZona = $_POST['idZona'];
+
 class ReservasController {
     
     private $conexion; // Propiedad para almacenar la conexión a la base de datos

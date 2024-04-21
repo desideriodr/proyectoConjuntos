@@ -100,7 +100,7 @@
                             // Iterar sobre las zonas disponibles y mostrar cada una en una fila de la tabla
                             foreach ($zonasDisponibles as $zona) {
                                 echo "<tr>";
-                                echo "<form class='reservaForm'>";
+                                echo "<form class='reservaForm' action = 'ReservasController.php' method= 'post'>";
                                 echo "<input type='hidden' name='idZona' value='" . $zona['id'] . "'>";
                                 echo "<td>" . $zona['nombre'] . "</td>";
                                 echo "<td>" . $zona['capacidadMax'] . "</td>";
@@ -124,7 +124,7 @@
                                 echo "</td>";
                                 echo "<td><input type='date' name='fechaDesde' class='form-control'></td>";
                                 echo "<td><input type='date' name='fechaHasta' class='form-control'></td>";
-                                echo "<td><button type='button' class='btn btn-primary btnRegistrar'>Registrar</button></td>";
+                                echo "<td><button type='button' class='btn btn-primary btnRegistrar' onclick='registrarReserva(" . $zona['id'] . ")'>Registrar</button></td>";
                                 echo "</form>";
                                 echo "</tr>";
                             }
