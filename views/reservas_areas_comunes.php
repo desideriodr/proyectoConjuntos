@@ -1,54 +1,30 @@
-<!-- Contenido de reservas_areas_comunes.php -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas de Áreas Comunes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Reservas de Áreas Comunes</h1>
+    <h2>Zonas Comunes Disponibles</h2>
+    <ul>
+        <?php foreach ($zonasDisponibles as $zona): ?>
+            <li><?php echo $zona['nombre']; ?></li>
+            <!-- Agregar formulario para hacer reserva en esta zona -->
+            <!-- Este formulario debe incluir un select con los residentes y otros campos necesarios -->
+        <?php endforeach; ?>
+    </ul>
 
-<div class="container" id="reservaFormContainer" style="display: none;">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-8 col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title text-center mb-4">Reservar Área Común</h2>
-                    <?php
-                    // Consulta a la base de datos para obtener las zonas comunes
-                    $query = "SELECT * FROM zonas_comunes";
-                    $result = mysqli_query($db, $query);
-                    if (mysqli_num_rows($result) > 0) {
-                        // Mostrar formulario para cada zona común
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            ?>
-                            <form action="registrar_reserva.php" method="post" class="zona-form">
-                                <h3><?php echo $row['nombre']; ?></h3>
-                                <input type="hidden" name="id_zona" value="<?php echo $row['id']; ?>">
-                                <div class="form-group">
-                                    <label for="residente">Residente:</label>
-                                    <select name="id_residente" class="form-control">
-                                        <?php
-                                        // Consulta a la base de datos para obtener la lista de residentes
-                                        $query_residentes = "SELECT * FROM residentes";
-                                        $result_residentes = mysqli_query($db, $query_residentes);
-                                        if (mysqli_num_rows($result_residentes) > 0) {
-                                            while ($row_residente = mysqli_fetch_assoc($result_residentes)) {
-                                                echo '<option value="' . $row_residente['id'] . '">' . $row_residente['nombre'] . '</option>';
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="estado">Estado:</label>
-                                    <input type="text" name="estado" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Reservar</button>
-                                    <button type="button" class="btn btn-danger">Deshacer Reserva</button>
-                                </div>
-                            </form>
-                            <?php
-                        }
-                    } else {
-                        echo "No hay zonas comunes disponibles.";
-                    }
-                    ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <h2>Reservas Actuales</h2>
+    <ul>
+        <?php foreach ($reservas as $reserva): ?>
+            <li><?php echo $reserva['nombre_residente']; ?> - <?php echo $reserva['zona_comun']; ?></li>
+            <!-- Mostrar información sobre las reservas existentes -->
+        <?php endforeach; ?>
+    </ul>
+
+    <!-- Agregar formulario para hacer una nueva reserva -->
+</body>
+</html>
