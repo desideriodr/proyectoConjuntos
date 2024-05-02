@@ -3,15 +3,7 @@
 // Verificar si se recibieron los datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener los datos del formulario
-    $idZona = $_POST["zona"];
-    $idResidente = $_POST["residente"];
-    $fechaDesde = $_POST["fechaDesde"];
-    $horaDesde = $_POST["horaDesde"];
-    $fechaHasta = $_POST["fechaHasta"];
-    $horaHasta = $_POST["horaHasta"];
-    $estado = $_POST["estado"];
-    $fechaHoraDesde = $fechaDesde . ' ' . $horaDesde;
-    $fechaHoraHasta = $fechaHasta . ' ' . $horaHasta;
+    $id = $_POST["id"];
 
     // Incluir el archivo del controlador
     require_once 'C:/XAMPP/htdocs/proyectoConjuntos/controllers/ReservasController.php';
@@ -20,8 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $reservasController = new ReservasController($db);
 
     // Llamar al método para registrar la reserva
-    $resultado = $reservasController->registrarReserva($idZona, $idResidente, $fechaHoraDesde, $fechaHoraHasta, $estado);
-
+    $resultado = $reservasController->cancelarReserva($id);
 
     header("Location: dashboard.php");
 } else {

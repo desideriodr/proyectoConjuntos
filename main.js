@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+   
     // JavaScript para controlar la visibilidad del contenedor de reservas
     var reservasAreasComunesLink = document.getElementById('reservasAreasComunes');
     var reservasContent = document.getElementById('reservasContent');

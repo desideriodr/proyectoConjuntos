@@ -10,10 +10,12 @@ class AuthController {
             header('Location: ../views/dashboard.php');
             exit();
         } else {
-            // Si las credenciales no son válidas, mostrar un mensaje de error
+            // Si las credenciales no son válidas, almacenar el mensaje de error en una variable de sesión
             $_SESSION['error'] = "Nombre de usuario o contraseña incorrectos";
-            header('Location: ../views/login.php');
-            exit();
+            // Redirigir de vuelta a la página de inicio de sesión
+            //header('Location: ../views/login.php');
+            //exit();
+            return false;
         }
     }
 }

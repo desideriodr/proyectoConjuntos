@@ -13,6 +13,7 @@ $zonasComunes = $reservasController->mostrarZonas();
 $residentes = $reservasController->mostrarResidentes();
 
 $reservas = $reservasController->mostrarReservas();
+
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +23,7 @@ $reservas = $reservasController->mostrarReservas();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dashboard</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
         <link rel="stylesheet" href="../resource/css/styles.css">
     </head>
     <body>
@@ -114,12 +116,16 @@ $reservas = $reservasController->mostrarReservas();
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="fechaDesde">Desde:</label>
+                                        <label for="fechaDesde">Fecha Desde:</label>
                                         <input type="date" class="form-control" id="fechaDesde" name="fechaDesde" required>
+                                        <label for="horaDesde">Hora Hasta:</label>
+                                        <input type="time" class="form-control" id="horaDesde" name="horaDesde" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="fechaHasta">Hasta:</label>
+                                        <label for="fechaHasta">Fecha Hasta:</label>
                                         <input type="date" class="form-control" id="fechaHasta" name="fechaHasta" required>
+                                        <label for="horaHasta">Hora Hasta:</label>
+                                        <input type="time" class="form-control" id="horaHasta" name="horaHasta" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Registrar</button>
                                 </form>
@@ -129,9 +135,9 @@ $reservas = $reservasController->mostrarReservas();
                     </div>
 
 
-                    <div class="mt-3">
+                    <div class="mt-3" id="tablaReservas">
                         <h5>Reservas Realizadas</h5>
-                        <table class="table table-striped" id="tablaReservas">
+                        <table class="table table-striped">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Zona Común</th>
@@ -139,6 +145,7 @@ $reservas = $reservasController->mostrarReservas();
                                     <th scope="col">Fecha de Inicio</th>
                                     <th scope="col">Fecha de Fin</th>
                                     <th scope="col">Estado</th>
+                                    <th scope="col">opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -149,10 +156,18 @@ $reservas = $reservasController->mostrarReservas();
                                         <td><?php echo $reserva['fecha_inicio']; ?></td>
                                         <td><?php echo $reserva['fecha_fin']; ?></td>
                                         <td><?php echo $reserva['estado']; ?></td>
+                                        <td>
+                                            <!-- Botón para cancelar la reserva -->
+                                            <form action="cancelar_reserva.php" method="POST">
+                                                <input type="hidden" name="id" value="<?php echo $reserva['id']; ?>">
+                                                <button type="submit" class="btn btn-danger" <?php if ($reserva['estado'] === 'Cancelada') echo 'disabled'; ?>><i class="bi bi-x"></i></button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <div id="mensaje" class="alert <?php echo $resultado ? 'alert-success' : 'alert-danger'; ?>" role="alert" style="display: <?php echo $resultado ? 'block' : 'none'; ?>"><?php echo $mensaje; ?></div>
                     </div>
 
 

@@ -8,7 +8,7 @@ class Reservas {
         global $db;
 
         // Consultar la base de datos para obtener las reservas actuales
-        $sql = "SELECT Z.nombre as nombre_zona,RE.nombre as nombre_residente,R.fecha_inicio,fecha_fin,estado FROM reservas R
+        $sql = "SELECT R.id,Z.nombre as nombre_zona,RE.nombre as nombre_residente,R.fecha_inicio,fecha_fin,estado FROM reservas R
                 INNER JOIN residentes RE ON (R.id_residente = RE.id)
                 INNER JOIN zonas_comunes Z ON (R.id_zona_comun = Z.id)";
         $result = $db->query($sql);
