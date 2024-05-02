@@ -167,7 +167,6 @@ $reservas = $reservasController->mostrarReservas();
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                        <div id="mensaje" class="alert <?php echo $resultado ? 'alert-success' : 'alert-danger'; ?>" role="alert" style="display: <?php echo $resultado ? 'block' : 'none'; ?>"><?php echo $mensaje; ?></div>
                     </div>
 
 

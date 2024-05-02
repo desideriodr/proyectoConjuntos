@@ -22,7 +22,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Llamar al método para registrar la reserva
     $resultado = $reservasController->registrarReserva($idZona, $idResidente, $fechaHoraDesde, $fechaHoraHasta, $estado);
 
+    // Verificar el resultado
+    // Después de realizar la operación de reserva
+    if ($resultado  === true) {
+        $mensaje = "Reserva registrada con éxito";
+    } else {
+        $mensaje = "Error al registrar la reserva";
+    }
 
+// Almacenar el mensaje en una variable de sesión para que esté disponible en dashboard.php
+    $_SESSION['mensaje'] = $mensaje;
+
+// Redireccionar a dashboard.php
     header("Location: dashboard.php");
 } else {
     // Si no se reciben datos por POST, redireccionar a la página de inicio

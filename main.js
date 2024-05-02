@@ -1,3 +1,5 @@
+/* global $_SESSION */
+
 document.addEventListener("DOMContentLoaded", function() {
    
     // JavaScript para controlar la visibilidad del contenedor de reservas
@@ -18,4 +20,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Ocultar la tabla cuando se muestra el formulario al cargar la página
     reservasContent.style.display = 'none';
+    
 });

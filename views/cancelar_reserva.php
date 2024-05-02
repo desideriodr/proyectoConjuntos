@@ -1,5 +1,4 @@
 <?php
-
 // Verificar si se recibieron los datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener los datos del formulario
@@ -13,6 +12,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Llamar al método para registrar la reserva
     $resultado = $reservasController->cancelarReserva($id);
+
+    // Verificar el resultado
+    // Después de realizar la operación de reserva
+    if ($resultado === true) {
+        $mensaje = "Cancelado con exito!";
+    } else {
+        $mensaje = "Error al cancelar la reserva";
+    }
+ 
+    // Almacenar el mensaje en una variable de sesión para que esté disponible en dashboard.php
+    $_SESSION['mensaje'] = $mensaje;
+
 
     header("Location: dashboard.php");
 } else {
