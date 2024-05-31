@@ -49,11 +49,11 @@ class ReservasController {
         return true;
     }
 
-    private function existeReservaEnRango($idZona, $fechaDesde, $fechaHasta) {
+    private function existeReservaEnRango($idZona, $fechaDesde) {
         // Consultar la base de datos para verificar si ya existe una reserva en el rango de fechas seleccionado
-        $sql = "SELECT COUNT(*) AS total_reservas FROM reservas WHERE id_zona_comun = ? AND ((fecha_inicio <= ? AND fecha_fin >= ?) OR (fecha_inicio <= ? AND fecha_fin >= ?)) AND estado = 'Reservado'";
+        $sql = "SELECT COUNT(*) AS total_reservas FROM reservas WHERE id_zona_comun = ? AND AND date_format(fecha_inicio,'%Y-%m-%d') = date_format(?,'%Y-%m-%d') AND date_format(?,'%H-%m-%s') BETWEEN date_format(fecha_inicio,'%H-%m-%s') AND date_format(fecha_fin,'%H-%m-%s') AND estado = 'Reservado'";
         $stmt = $this->conexion->prepare($sql);
-        $stmt->bind_param('sssss', $idZona, $fechaDesde, $fechaHasta, $fechaDesde, $fechaHasta);
+        $stmt->bind_param('sss', $idZona, $fechaDesde, $fechaDesde);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();

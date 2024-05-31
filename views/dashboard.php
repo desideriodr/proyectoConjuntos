@@ -13,7 +13,6 @@ $zonasComunes = $reservasController->mostrarZonas();
 $residentes = $reservasController->mostrarResidentes();
 
 $reservas = $reservasController->mostrarReservas();
-
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +38,7 @@ $reservas = $reservasController->mostrarReservas();
                                     <span id="username">Nombre de Usuario</span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Cerrar Sesión</a>
+                                    <a class="dropdown-item" href="/proyectoConjuntos/logout.php">Cerrar Sesión</a>
                                     <a class="dropdown-item" href="#">Configuración</a>
                                 </div>
                             </li>
@@ -50,33 +49,33 @@ $reservas = $reservasController->mostrarReservas();
             <div class="row">
                 <div class="col-md-2 sidebar">
                     <ul class="nav flex-column">
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a class="nav-link btn" href="#">Administración <i class="bi bi-caret-down"></i></a>
                             <ul class="submenu">
                                 <li><a href="#">Listar Usuarios</a></li>
                                 <li><a href="#">Crear Usuarios</a></li>
                                 <li><a href="#">Asignar Permisos</a></li>
                             </ul>
-                        </li>
+                        </li>-->
                         <li class="nav-item">
-                            <a class="nav-link btn" href="#">Residentes <i class="bi bi-caret-down"></i></a>
+                            <a class="nav-link btn" href="#">Areas comunes <i class="bi bi-caret-down"></i></a>
                             <ul class="submenu">
-                                <li><a href="#">Nuevo Residente</a></li>
+                                <!--<li><a href="#">Nuevo Residente</a></li>
                                 <li><a href="#">Gestionar Residente</a></li>
                                 <li><a href="#">Ingreso Visitante</a></li>
                                 <li><a href="#">Rastrear Mascota</a></li>
-                                <li><a href="#">Registrar Vehículos</a></li>
-                                <li><a href="#" id="reservasAreasComunes">Reserva áreas comunes</a></li>
-                                <li><a href="#">Generar Recibo de Pago</a></li>
+                                <li><a href="#">Registrar Vehículos</a></li>-->
+                                <li><a class="nav-link btn" href="#" id="reservasAreasComunes">Reservas</a></li>
+                                <!--<li><a href="#">Generar Recibo de Pago</a></li>-->
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a class="nav-link btn" href="#">Inventario <i class="bi bi-caret-down"></i></a>
                             <ul class="submenu">
                                 <li><a href="#">Listar Artículos</a></li>
                                 <li><a href="#">Registrar Artículos</a></li>
                             </ul>
-                        </li>
+                        </li>-->
                     </ul>
                 </div>
                 <div class="col-md-10 content">
@@ -173,6 +172,9 @@ $reservas = $reservasController->mostrarReservas();
                 </div>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="../main.js"></script>
     </body>
 </html>

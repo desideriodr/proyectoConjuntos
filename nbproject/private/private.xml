@@ -3,7 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/XAMPP/htdocs/proyectoConjuntos/views/reservar.php</file>
+            <file>file:/C:/XAMPP/htdocs/proyectoConjuntos/views/login.php</file>
+            <file>file:/C:/XAMPP/htdocs/proyectoConjuntos/models/Reservas.php</file>
+            <file>file:/C:/XAMPP/htdocs/proyectoConjuntos/main.js</file>
+            <file>file:/C:/XAMPP/htdocs/proyectoConjuntos/controllers/AuthController.php</file>
             <file>file:/C:/XAMPP/htdocs/proyectoConjuntos/index.php</file>
+            <file>file:/C:/XAMPP/htdocs/proyectoConjuntos/controllers/ReservasController.php</file>
+            <file>file:/C:/XAMPP/htdocs/proyectoConjuntos/views/dashboard.php</file>
+            <file>file:/C:/XAMPP/htdocs/proyectoConjuntos/views/cancelar_reserva.php</file>
         </group>
     </open-files>
 </project-private>
